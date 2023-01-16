@@ -15,7 +15,7 @@ module.exports = {
         var namefilter = interaction.options.getString("ip")
         queryMasterServer('hl2master.steampowered.com:27011',REGIONS.ALL, {gamedir: "Garrysmod",name_match: [namefilter]},15000)
         .then(servers => {
-            infoEmbed.setTitle("Matching Servers"+response.name)
+            infoEmbed.setTitle("Matching Servers")
             infoEmbed.setColor("DARK_RED")
             infoEmbed.addFields(
                 {name:"Found Servers: ",value: `\`\`\`${servers}\`\`\``}
