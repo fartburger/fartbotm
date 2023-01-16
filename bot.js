@@ -141,17 +141,6 @@ findserverfromip <name> <OPTIONAL timeout (in seconds, default 10 seconds)> <OPT
 there will be more commands added, and suggestions are also appreciated\`\`\`
                     `);
                     break;
-                case "pledge":
-                    for (let x = 0; x < 30; x++) {
-                        message.channel.send("i pledge allegiance to the bag https://cdn.discordapp.com/attachments/849050329907068944/923090276950618152/ethan.png");
-                    }
-                    break;
-                case "nignig":
-                    for (let x = 0; x < 10; x++) {
-                        message.channel.send("https://cdn.discordapp.com/attachments/880493470245077073/923819713174331392/nignig.gif");
-                    }
-                    break;
-
                 case "ban":
                     if(message.member.permissions.has(PermissionsBitField.Flags.BanMembers)) {
                     
