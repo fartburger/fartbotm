@@ -7,12 +7,12 @@ module.exports = {
         .setDescription("get a gmod server's status from its ip")
         .addStringOption(option =>
             option
-            .setName("ip:port")
-            .setDescription("ip and port of server")
+            .setName("ip")
+            .setDescription("ip:port of server")
             .setRequired(true)),
     async execute(interaction) {
         const infoEmbed = new EmbedBuilder()
-        queryGameServerInfo(interaction.options.getString("ip:port")).then(response => {
+        queryGameServerInfo(interaction.options.getString("ip")).then(response => {
             //console.log(response)
             infoEmbed.setTitle("Information for server "+response.name)
             infoEmbed.setColor("DARK_RED")
