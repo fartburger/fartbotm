@@ -12,7 +12,7 @@ const fileSystem = require("fs");
 var geoip = require("geoip-lite");
 var geocoder = require('local-reverse-geocoder');
 const {queryGameServerPlayer,queryGameServerInfo,queryMasterServer,REGIONS} = require('steam-server-query');
-
+const path = require('path')
 
 const client = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_MEMBERS,Intents.FLAGS.GUILD_INVITES,Intents.FLAGS.GUILD_INTEGRATIONS,Intents.FLAGS.GUILD_WEBHOOKS]
