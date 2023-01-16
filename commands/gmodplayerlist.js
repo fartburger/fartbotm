@@ -17,7 +17,7 @@ module.exports = {
             infoEmbed.setTitle("Players on "+response.name)
             infoEmbed.setColor("DARK_RED")
             infoEmbed.addFields(
-                {name:"Player List: ",value: `\`\`\`${response.players}\`\`\``}
+                {name:"Player List: ",value: `\`\`\`${response.players.toString()}\`\`\``}
             )
         })
         .catch(e => {

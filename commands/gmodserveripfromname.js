@@ -18,7 +18,7 @@ module.exports = {
             infoEmbed.setTitle("Matching Servers")
             infoEmbed.setColor("DARK_RED")
             infoEmbed.addFields(
-                {name:"Found Servers: ",value: `\`\`\`${servers}\`\`\``}
+                {name:"Found Servers: ",value: `\`\`\`${servers.toString()}\`\`\``}
             )
         })
         .catch(e => {
