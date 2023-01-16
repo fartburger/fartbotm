@@ -9,7 +9,7 @@
         "body-parser": "^1.19.1",
         "browserify-fs": "^1.0.0",
         "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
-        "discord.js": "^13.6.0",
+        "discord.js": "^14.7.1",
         "express": "^4.17.2",
         "fs": "^0.0.1-security",
         "geoip-lite": "^1.4.2",
