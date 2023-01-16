@@ -15,7 +15,7 @@ const {queryGameServerPlayer,queryGameServerInfo,queryMasterServer,REGIONS} = re
 const path = require('path')
 
 const client = new Client({
-    intents: [GatewayIntentBits.ALL]
+    intents: [GatewayIntentBits.GuildMessages]
 });
 client.commands = new Collection();
 const commandsPath = path.join(__dirname,'commands');
