@@ -1,4 +1,4 @@
-const {Client, GatewayIntentBits, MessageEmbed,PermissionsBitField, TextChannel,MessageCollector, Collection} = require("discord.js");
+const {Client,Events, GatewayIntentBits, MessageEmbed,PermissionsBitField, TextChannel,MessageCollector, Collection} = require("discord.js");
 const {
 	joinVoiceChannel,
 	createAudioPlayer,
