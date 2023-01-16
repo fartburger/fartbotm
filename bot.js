@@ -126,130 +126,6 @@ client.on("messageCreate", (message) => {
         }
             var server = message.guild;
             switch (cmd) {
-                case "help":
-                    message.channel.send(` \`\`\`prefix: '^' (not changeable)
-arguments specified in <> are required
-current commands available:
-help: this. prints help message
-dox <mentioned target>: generates a random ip address (might not even be valid sometimes) of user mentioned.
-iplookup <ip address>: self-explanatory, gets information about an ip address.
-analytics: provides statitics from bot command usage and uptime
-serverinfo <server ip and port (x.x.x.x:port)>: gets information about the valve server with given ip
-playerinfo <server ip and port (x.x.x.x:port)>: gets a list of players on the valve server with given ip
-findserverfromip <name> <OPTIONAL timeout (in seconds, default 10 seconds)> <OPTIONAL game type> <OPTIONAL map>: finds a list of server ips with given parameters.
-
-there will be more commands added, and suggestions are also appreciated\`\`\`
-                    `);
-                    break;
-                case "ban":
-                    if(message.member.permissions.has(PermissionsBitField.Flags.BanMembers)) {
-                    
-                    var banusr = args[1];
-                    if (args[2]) {
-                        var reason = "";
-                        var aiterator=0
-                        args.forEach(item => {
-                            if(aiterator<=1) {
-                            aiterator++
-                            } else {
-                                reason = reason.concat(" ",item);
-                            }
-                        });
-                    }
-                    var data = fileSystem.readFileSync('analytics.json');
-                    var jdata = JSON.parse(data)
-                    jdata.bans++;
-                    var sjdata = JSON.stringify(jdata)
-                    fileSystem.writeFileSync("analytics.json",sjdata)
-                    var buser = message.mentions.users.first();
-                    console.log(buser)
-                    if(!buser) {
-                        message.channel.send("User not found")
-                        return
-                    } 
-                    message.guild.bans.create(buser, { reason: reason})
-                    .then(msg => {
-                        const bembed = new MessageEmbed()
-                        .setTitle('User has been banned.')
-                        .setColor('#624002')
-                        .setThumbnail(buser.displayAvatarURL())
-                        .addField('User: ',buser.username)
-                        .addField('Banned by: ',message.author.username)
-                        .addField('Reason: ', reason ? reason : "None given.")
-                        message.channel.send({embeds:[bembed]});
-                    })
-                    .catch(message.channel.send("Failed to ban user"))
-                    }
-                    break;
-                    case "kick":
-                        if(message.member.permissions.has(PermissionsBitField.Flags.KickMembers)) {
-                        
-                        var kickusr = args[1];
-                        if (args[2]) {
-                            var kreason = "";
-                            var aiterator=0
-                            args.forEach(item => {
-                                if(aiterator<=1) {
-                                aiterator++
-                                } else {
-                                    kreason = kreason.concat(" ",item);
-                                }
-                            });
-                        }
-                        var data = fileSystem.readFileSync('analytics.json');
-                        var jdata = JSON.parse(data)
-                        jdata.kicks++;
-                        var sjdata = JSON.stringify(jdata)
-                        fileSystem.writeFileSync("analytics.json",sjdata)
-                        message.guild.members.fetch(getIDFromMention(args[1]))
-                            .then(user => {
-                                //if (message.author.id==fartid.toString()) {
-                                if (user.id!=client.id) {
-                                const kickembed = new MessageEmbed()
-                                .setTitle('User has been kicked.')
-                                .setColor('#624002')
-                                .setThumbnail(user.displayAvatarURL())
-                                .addField('User: ',user.user.username)
-                                .addField('Banned by: ',message.author.username)
-                                .addField('Reason: ', reason ? reason : "None given.")
-                                message.channel.send({embeds:[kickembed]});
-                                var msgreason = reason ? reason : "None";
-                                server.members.kick(user.user)
-                                .then(console.log("successfully kicked user"))
-                                .catch(console.error);
-                                }
-                                //}
-                            })
-                            .catch(console.error);
-                        }
-                        break;
-                    case 'striproles':
-                        if (message.member.permissions.has(PermissionsBitField.Flags.ManageRoles) || message.member.user.id == fartid) {
-                        message.guild.members.fetch(getIDFromMention(args[1]))
-                        .then(user => {
-                            user.roles.remove(user.roles.cache)
-                            .then(message.delete()
-                            .then()
-                            .catch(console.error)
-                            )
-                        });
-                    }
-                    break;
-                    case 'analytics':
-                        var data = fileSystem.readFileSync('analytics.json');
-                        var jdata = JSON.parse(data)
-                        console.log(JSON.parse(data))
-                        guildsCount = client.guilds.cache.size
-                        timeOnline = ((client.uptime/1000)/60)>=60 ? Math.round((((client.uptime/1000)/60)/60)).toString()+" hour(s)" : Math.round(((client.uptime/1000)/60)).toString()+" minute(s)"
-                        message.channel.send(`\`\`\`fartbot analytics:
-guilds containing fartbot: ${guildsCount}
-time online: ${timeOnline}
-kicks issued by fartbot: ${jdata.kicks} 
-bans issued by fartbot: ${jdata.bans} 
-# of users doxxed by fartbot: ${jdata.doxxes} \`\`\``)
-.then()
-.catch(console.error)
-                    break;   
                     case 'serverinfo':
                         reqServer = args[1];
                         queryGameServerInfo(args[1]).then(response => {
@@ -294,7 +170,6 @@ bans issued by fartbot: ${jdata.bans}
                             }
                             var timeout = args[2]!=null ? parseInt(args[2])*1000 : 10*1000
                             var namefilter = args[1]
-                            queryMasterServer('f',)
                             queryMasterServer('hl2master.steampowered.com:27011',REGIONS.ALL, {gamedir: "Garrysmod",name_match: [namefilter]},timeout)
                             .then(servers => {
                                 message.channel.send(`found results:

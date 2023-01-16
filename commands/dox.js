@@ -18,8 +18,6 @@ module.exports = {
         var fakeip = Math.floor((Math.random() * (255 - 192 + 1) + 192)).toString() + "." + Math.floor((Math.random() * (195 - 20 + 1) + 20)).toString() + "." + Math.floor((Math.random() * (145 - 45 + 1) + 45).toString()) + "." + Math.floor((Math.random() * (20 - 60 + 1) + 60)).toString()
         var geo = geoip.lookup(fakeip);
         console.log(geo===null)
-        fakeip = Math.floor((Math.random() * (255 - 192 + 1) + 192)).toString() + "." + Math.floor((Math.random() * (195 - 20 + 1) + 20)).toString() + "." + Math.floor((Math.random() * (145 - 45 + 1) + 45).toString()) + "." + Math.floor((Math.random() * (20 - 60 + 1) + 60)).toString()
-        geo = geoip.lookup(fakeip);
         do {
             fakeip = Math.floor((Math.random() * (255 - 192 + 1) + 192)).toString() + "." + Math.floor((Math.random() * (195 - 20 + 1) + 20)).toString() + "." + Math.floor((Math.random() * (145 - 45 + 1) + 45).toString()) + "." + Math.floor((Math.random() * (20 - 60 + 1) + 60)).toString()
             geo = geoip.lookup(fakeip);
