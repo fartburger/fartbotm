@@ -1,4 +1,4 @@
-const {Client, Intents, MessageEmbed,Permissions, TextChannel,MessageCollector} = require("discord.js");
+const {Client, Intents, MessageEmbed,Permissions, TextChannel,MessageCollector,SlashCommandBuilder, Collection} = require("discord.js");
 const {
 	joinVoiceChannel,
 	createAudioPlayer,
@@ -12,9 +12,26 @@ const fileSystem = require("fs");
 var geoip = require("geoip-lite");
 var geocoder = require('local-reverse-geocoder');
 const {queryGameServerPlayer,queryGameServerInfo,queryMasterServer,REGIONS} = require('steam-server-query');
+
+
 const client = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_MEMBERS,Intents.FLAGS.GUILD_INVITES,Intents.FLAGS.GUILD_INTEGRATIONS,Intents.FLAGS.GUILD_WEBHOOKS]
 });
+client.commands = new Collection();
+const commandsPath = path.join(__dirname,'commands');
+const commandFiles = filesystem.readdirSync(commandsPath).filter(fire => fileSystem.endsWith('.js'));
+
+//boilerplate
+for(const file of commandFiles) {
+    const filePath = path.join(commandsPath,file);
+    const command = require(filePath);
+    if('data' in command && 'execute' in command) {
+        client.commands.set(command.data.name, command);
+    } else {
+        console.log(`Invalid command! ${filepath} is missing require 'data' or 'execute' property`);
+    }
+}
+
 var fartid = 872543618391490560;
 client.on("ready", () => {
     console.log("fartbot activated");
@@ -71,6 +88,9 @@ function playSound(link) {
 }
 
 
+client.on(Events.InteractionCreate, interaction => {
+    console.log(interaction);
+})
 
 client.on("messageCreate", (message) => {
     message.guild.members.fetch(client.user.id)
