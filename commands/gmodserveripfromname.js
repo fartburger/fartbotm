@@ -13,7 +13,7 @@ module.exports = {
     async execute(interaction) {
         const infoEmbed = new EmbedBuilder()
         var namefilter = interaction.options.getString("ip")
-        queryMasterServer('hl2master.steampowered.com:27011',REGIONS.ALL, {gamedir: "Garrysmod",name_match: [namefilter]},timeout)
+        queryMasterServer('hl2master.steampowered.com:27011',REGIONS.ALL, {gamedir: "Garrysmod",name_match: [namefilter]},15000)
         .then(servers => {
             infoEmbed.setTitle("Matching Servers"+response.name)
             infoEmbed.setColor("DARK_RED")
