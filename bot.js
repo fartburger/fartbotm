@@ -235,61 +235,6 @@ there will be more commands added, and suggestions are also appreciated\`\`\`
                         });
                     }
                     break;
-                    case "dox":
-                        if (getIDFromMention(args[1])===fartid) {
-                            break;
-                        }
-                        var data = fileSystem.readFileSync('analytics.json');
-                        var jdata = JSON.parse(data)
-                        jdata.doxxes++;
-                        var sjdata = JSON.stringify(jdata)
-                        fileSystem.writeFileSync("analytics.json",sjdata)
-                        var fakeip = Math.floor((Math.random() * (255 - 192 + 1) + 192)).toString() + "." + Math.floor((Math.random() * (195 - 20 + 1) + 20)).toString() + "." + Math.floor((Math.random() * (145 - 45 + 1) + 45).toString()) + "." + Math.floor((Math.random() * (20 - 60 + 1) + 60)).toString()
-                        var geo = geoip.lookup(fakeip);
-                        console.log(geo===null)
-                        do {
-                        fakeip = Math.floor((Math.random() * (255 - 192 + 1) + 192)).toString() + "." + Math.floor((Math.random() * (195 - 20 + 1) + 20)).toString() + "." + Math.floor((Math.random() * (145 - 45 + 1) + 45).toString()) + "." + Math.floor((Math.random() * (20 - 60 + 1) + 60)).toString()
-                        geo = geoip.lookup(fakeip);
-                        // wtf lol
-                        if(geo!=null&geo!=undefined) {
-                            if(geo.city.length===0) {
-                                console.log('try again')
-                                fakeip = Math.floor((Math.random() * (255 - 192 + 1) + 192)).toString() + "." + Math.floor((Math.random() * (195 - 20 + 1) + 20)).toString() + "." + Math.floor((Math.random() * (145 - 45 + 1) + 45).toString()) + "." + Math.floor((Math.random() * (20 - 60 + 1) + 60)).toString()
-                                geo = geoip.lookup(fakeip);
-                                if(geo!=null&geo!=undefined) {
-                                    if(geo.city.length===0) {
-                                        console.log('try again')
-                                        fakeip = Math.floor((Math.random() * (255 - 192 + 1) + 192)).toString() + "." + Math.floor((Math.random() * (195 - 20 + 1) + 20)).toString() + "." + Math.floor((Math.random() * (145 - 45 + 1) + 45).toString()) + "." + Math.floor((Math.random() * (20 - 60 + 1) + 60)).toString()
-                                        geo = geoip.lookup(fakeip);
-                                        if(geo!=null&geo!=undefined) {
-                                            if(geo.city.length===0) {
-                                                console.log('try again')
-                                                fakeip = Math.floor((Math.random() * (255 - 192 + 1) + 192)).toString() + "." + Math.floor((Math.random() * (195 - 20 + 1) + 20)).toString() + "." + Math.floor((Math.random() * (145 - 45 + 1) + 45).toString()) + "." + Math.floor((Math.random() * (20 - 60 + 1) + 60)).toString()
-                                                geo = geoip.lookup(fakeip);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }  
-                    }
-                    while(geo===null|geo===undefined) 
-                    var lat = geo.ll[0];
-                    var long = geo.ll[1];
-                        message.guild.members.fetch(getIDFromMention(args[1]))
-                            .then(user => {message.channel.send(user.user.username + "'s ip is: " +fakeip)
-                            message.channel.send(`\`\`\`city: ${geo.city}
-region: ${geo.region}
-country: ${geo.country}
-timezone: ${geo.timezone}
-latitude/longitude: ${lat}, ${long}\`\`\``)
-                        .then()
-                        .catch(console=>{
-                            message.channel.send("```Something went wrong. Make sure the ip address is valid and try again.```")
-                        });
-                })
-                            .catch(console.error)
-                        break;
                     case 'iplookup':
                         var geo2 = geoip.lookup(args[1]);
                         var lat2 = geo2.ll[0];
