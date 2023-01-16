@@ -12,7 +12,7 @@ module.exports = {
             .setRequired(true)),
     async execute(interaction) {
         var namefilter = interaction.options.getString("ip")
-        var serverlist;
+        const serverlist = {};
         queryMasterServer('hl2master.steampowered.com:27011',REGIONS.ALL, {gamedir: "Garrysmod",name_match: [namefilter]},15000)
         .then(servers => {
             serverlist = servers;
