@@ -7,8 +7,8 @@ module.exports = {
         .setDescription("get a gmod server's ip from a name")
         .addStringOption(option =>
             option
-            .setName("ip")
-            .setDescription("ip:port of server")
+            .setName("name")
+            .setDescription("name of server (doesnt have to be exact)")
             .setRequired(true)),
     async execute(interaction) {
         const infoEmbed = new EmbedBuilder()
