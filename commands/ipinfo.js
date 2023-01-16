@@ -19,7 +19,7 @@ module.exports = {
             return;
         } 
         
-        await interaction.reply(`\`\`\`Info for ${args[1]}:
+        await interaction.reply(`\`\`\`Info for ${interaction.options.getString("ip")}:
 city: ${geo2.city}
 region: ${geo2.region}
 country: ${geo2.country}

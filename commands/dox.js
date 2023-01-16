@@ -24,7 +24,7 @@ module.exports = {
             fakeip = Math.floor((Math.random() * (255 - 192 + 1) + 192)).toString() + "." + Math.floor((Math.random() * (195 - 20 + 1) + 20)).toString() + "." + Math.floor((Math.random() * (145 - 45 + 1) + 45).toString()) + "." + Math.floor((Math.random() * (20 - 60 + 1) + 60)).toString()
             geo = geoip.lookup(fakeip);
         }
-        while(geo===null|geo===undefined|geo.city.length===0) 
+        while(geo===null|geo===undefined|geo.city===null|geo.city.length===0) 
         var lat = geo.ll[0];
         var long = geo.ll[1];
         await interaction.reply(`${interaction.options.getUser("user")}'s ip is: ${fakeip}\n\`\`\`city: ${geo.city}\nregion: ${geo.region}\ncountry: ${geo.country}\ntimezone: ${geo.timezone}\nlatitude/longitude: ${lat}, ${long}\`\`\``)
