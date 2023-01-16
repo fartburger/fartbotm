@@ -5,6 +5,6 @@ module.exports = {
         .setName("test")
         .setDescription("slash command test"),
     async execute(interaction) {
-        await interaction.reply(`tested by <@!${user.id}>`)
+        await interaction.reply(`tested by <@!${interaction.user.id}>`)
     }
 };
