@@ -27,7 +27,6 @@ module.exports = {
         while(geo===null|geo===undefined|geo.city.length===0) 
         var lat = geo.ll[0];
         var long = geo.ll[1];
-        await interaction.reply(`<@!${interaction.options.getUser("user")}'s ip is: ${fakeip}\n\`\`\`city: ${geo.city}\nregion: ${geo.region}\ncountry: ${geo.country}\ntimezone: ${geo.timezone}\n
-            latitude/longitude: ${lat}, ${long}\`\`\``)
+        await interaction.reply(`${interaction.options.getUser("user")}'s ip is: ${fakeip}\n\`\`\`city: ${geo.city}\nregion: ${geo.region}\ncountry: ${geo.country}\ntimezone: ${geo.timezone}\nlatitude/longitude: ${lat}, ${long}\`\`\``)
     }
 };

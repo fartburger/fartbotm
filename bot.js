@@ -235,27 +235,6 @@ there will be more commands added, and suggestions are also appreciated\`\`\`
                         });
                     }
                     break;
-                    case 'iplookup':
-                        var geo2 = geoip.lookup(args[1]);
-                        var lat2 = geo2.ll[0];
-                        var long2 = geo2.ll[1];
-                        if (geo2.city.length>0 & geo2.region.length>0) {
-                        message.channel.send(`\`\`\`Info for ${args[1]}:
-city: ${geo2.city}
-region: ${geo2.region}
-country: ${geo2.country}
-timezone: ${geo2.timezone}
-latitude/longitude: ${lat2}, ${long2}\`\`\``)
-                        .then()
-                        .catch(console=>{
-                            message.channel.send("```Something went wrong. Make sure the ip address is valid and try again.```")
-                        });
-                    } else {
-                        message.channel.send('\`\`\`Invalid IP Address\`\`\`')
-                        .then()
-                        .catch(console.error)
-                    }
-                    break;
                     case 'analytics':
                         var data = fileSystem.readFileSync('analytics.json');
                         var jdata = JSON.parse(data)
