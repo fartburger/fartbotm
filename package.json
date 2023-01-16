@@ -1,0 +1,34 @@
+{
+    "name": "fartbot",
+    "version": "1.0.0",
+    "description": "The greatest bot ever made, arguably",
+    "main": "bot.js",
+    "author": "fartburger",
+    "dependencies": {
+        "@discordjs/voice": "^0.8.0",
+        "body-parser": "^1.19.1",
+        "browserify-fs": "^1.0.0",
+        "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+        "discord.js": "^13.6.0",
+        "express": "^4.17.2",
+        "fs": "^0.0.1-security",
+        "geoip-lite": "^1.4.2",
+        "local-reverse-geocoder": "^0.11.1",
+        "morgan": "^1.10.0",
+        "node-geocoder": "^3.28.0",
+        "node-static": "^0.7.11",
+        "socket.io": "^4.4.0",
+        "steam-server-query": "^1.1.2",
+        "unirest": "^0.6.0",
+        "winston": "^3.3.3"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node bot.js"
+    },
+    "engines": {
+        "node": "16.x",
+        "npm": "7.x"
+    },
+    "license": "ISC"
+}
