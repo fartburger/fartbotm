@@ -1,4 +1,4 @@
-const {Client, Intents, MessageEmbed,Permissions, TextChannel,MessageCollector, Collection} = require("discord.js");
+const {Client, GatewayIntentBits, MessageEmbed,Permissions, TextChannel,MessageCollector, Collection} = require("discord.js");
 const {
 	joinVoiceChannel,
 	createAudioPlayer,
@@ -15,7 +15,7 @@ const {queryGameServerPlayer,queryGameServerInfo,queryMasterServer,REGIONS} = re
 const path = require('path')
 
 const client = new Client({
-    
+    intents: [GatewayIntentBits.ALL]
 });
 client.commands = new Collection();
 const commandsPath = path.join(__dirname,'commands');
