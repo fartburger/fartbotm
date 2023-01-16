@@ -18,9 +18,9 @@ module.exports = {
             infoEmbed.setColor("DARK_RED")
             plys = response.players
             infoEmbed.addFields(
-                {name: "Game:",value:response.game},
-                {name:"Map:",value:response.map},
-                {name:"Player Count: ",value:response.players},
+                {name: "Game: ",value:response.game,inline:true},
+                {name:"Map: ",value:response.map,inline:true},
+                {name:"Player Count: ",value:response.players,inline:true},
             )
             
         })
