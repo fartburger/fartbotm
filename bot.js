@@ -19,7 +19,7 @@ const client = new Client({
 });
 client.commands = new Collection();
 const commandsPath = path.join(__dirname,'commands');
-const commandFiles = filesystem.readdirSync(commandsPath).filter(fire => fileSystem.endsWith('.js'));
+const commandFiles = fileSystem.readdirSync(commandsPath).filter(fire => fileSystem.endsWith('.js'));
 
 //boilerplate
 for(const file of commandFiles) {
