@@ -1,6 +1,6 @@
 const {queryGameServerPlayer,queryGameServerInfo,queryMasterServer,REGIONS} = require('steam-server-query');
 const {SlashCommandBuilder,EmbedBuilder, Constants} = require('discord.js')
-
+var serverlist = {}
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("gmodipfromname")
@@ -12,7 +12,6 @@ module.exports = {
             .setRequired(true)),
     async execute(interaction) {
         var namefilter = interaction.options.getString("ip")
-        const serverlist = {};
         queryMasterServer('hl2master.steampowered.com:27011',REGIONS.ALL, {gamedir: "Garrysmod",name_match: [namefilter]},15000)
         .then(servers => {
             serverlist = servers;
@@ -22,8 +21,8 @@ module.exports = {
         })
         const infoEmbed = new EmbedBuilder()
         .setTitle("Matching Servers")
-        .setColor("DARK_RED")
-        .addFields({name:"Found Servers: ",value: `\`\`\`${serverlist.toString()}\`\`\``})
+        .setColor("Blurple")
+        .addFields({name:"Found Servers: ",value: `\`\`\`${serverlist}\`\`\``})
 
 
         

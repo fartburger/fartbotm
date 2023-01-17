@@ -1,6 +1,6 @@
 const {queryGameServerPlayer,queryGameServerInfo,queryMasterServer,REGIONS} = require('steam-server-query');
 const {SlashCommandBuilder,EmbedBuilder, Constants} = require('discord.js')
-
+var serverresponse = {}
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("gmodplayerlist")
@@ -11,18 +11,17 @@ module.exports = {
             .setDescription("ip:port of server")
             .setRequired(true)),
     async execute(interaction) {
-        const infoEmbed = new EmbedBuilder()
         queryGameServerInfo(interaction.options.getString("ip")).then(response => {
             //console.log(response)
-            infoEmbed.setTitle("Players on "+response.name)
-            infoEmbed.setColor("DARK_RED")
-            infoEmbed.addFields(
-                {name:"Player List: ",value: `\`\`\`${response.players.toString()}\`\`\``}
-            )
+            serverresponse=response;
         })
         .catch(e => {
             console.error(e)
         })
+        const infoEmbed = new EmbedBuilder()
+        .setTitle("Player on "+serverresponse.name)
+        .setColor("Blurple")
+        .addFields({name:"Player List: ",value: `\`\`\`${serverresponse.players}\`\`\``})
         await interaction.reply({embeds: [infoEmbed]})
     }
 };
