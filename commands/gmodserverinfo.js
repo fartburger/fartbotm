@@ -15,12 +15,12 @@ module.exports = {
             //console.log(response)
             serverresponse=response;  
             const infoEmbed = new EmbedBuilder()
-            .setTitle(`Information for ${serverresponse.name}`)
+            .setTitle(`Information for ${response.name}`)
             .setColor("Blurple")
             .addFields(
-                {name: "Game: ",value:serverresponse.game,inline:true},
-                {name:"Map: ",value:serverresponse.map,inline:true},
-                {name:"Player Count: ",value:serverresponse.players,inline:true}
+                {name: "Game: ",value:response.game,inline:true},
+                {name:"Map: ",value:response.map,inline:true},
+                {name:"Player Count: ",value:response.players,inline:true}
             )
             await interaction.reply({embeds: [infoEmbed]})
         })

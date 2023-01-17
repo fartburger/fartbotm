@@ -18,7 +18,7 @@ module.exports = {
             const infoEmbed = new EmbedBuilder()
             .setTitle("Matching Servers")
             .setColor("Blurple")
-            .addFields({name:"Found Servers: ",value: `\`\`\`${serverlist}\`\`\``})
+            .addFields({name:"Found Servers: ",value: `${servers}`})
             await interaction.reply({embeds: [infoEmbed]})
         })
         .catch(e => {

@@ -15,9 +15,9 @@ module.exports = {
             //console.log(response)
             serverresponse=response;
             const infoEmbed = new EmbedBuilder()
-            .setTitle("Player on "+serverresponse.name)
+            .setTitle("Players on "+response.name)
             .setColor("Blurple")
-            .addFields({name:"Player List: ",value: `\`\`\`${serverresponse.players}\`\`\``})
+            .addFields({name:"Player List: ",value: `\`\`\`${response.players}\`\`\``})
             await interaction.reply({embeds: [infoEmbed]})
         })
         .catch(e => {
